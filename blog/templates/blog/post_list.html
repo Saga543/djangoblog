@@ -1,27 +1,12 @@
-<!DOCTYPE html>
-    <html lang="pl">
-        <head>
-            <meta charset="UTF-8">
-            <title>Blog dla programistów</title>
-        </head>
-<body>
-    <div>
-        <h1>Witam na stronie bloga!</h1>
-        <h2>Blog o programowaniu</h2>
-        <h3>Autor: Tomek</h3>
-        <h4>Wszelkie prawa zastrzeżone</h4>
-    </div>
-
+    {% extends 'blog/base.html' %}
+    {% block content %}
         {% for post in posts %}
-    <div>
-        <p>opublikowany: {{ post.published_date }}</p>
-        <h2><a href="">{{ post.title }}</a></h2>
-        <em>{{ post.text|linebreaksbr }}</em>
-    </div>
-    {% endfor %}
-    <ul>
-
-    </ul>
-</body>
-
-</html>
+            <div class="post">
+                <div class="data">
+                <p>opublikowany: {{ post.publish_date }}</p>
+                </div>
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <em>{{ post.text|linebreaksbr }}</em>
+            </div>
+        {% endfor %}
+    {% endblock %}
