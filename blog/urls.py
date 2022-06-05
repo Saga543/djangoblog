@@ -1,6 +1,9 @@
 from django.urls import path
 from . import views
 
+'''
+Lista urlpatterns przechowuje ścieżki do odpowiednich stron HTML
+'''
 urlpatterns = [
     path('', views.post_list, name='post_list'),
     path('post/<int:pk>/', views.post_detail, name='post_detail'),
